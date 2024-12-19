@@ -42,15 +42,19 @@ class Solution:
         l = 0
         m = 0
 
+        # for each element
         for r in range(len(nums)):
+            # if we find a 0 add to the 0 count
             if nums[r] == 0:
                 zcount += 1
             
+            # while we have more than 1 zero move the left side of the window until we remove a 0
             while zcount > 1:
                 if nums[l] == 0:
                     zcount -= 1
                 l += 1
             
+            # return either 0 or the size of the window
             m = max(m, r - l)
         
         return m
