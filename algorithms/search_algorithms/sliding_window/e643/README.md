@@ -34,8 +34,10 @@ n == nums.length
 class Solution:
     def findMaxAverage(self, nums: List[int], k: int) -> float:
         maxAverage = float('-inf')
+        # For each element until the beginning of the last window
         for i in range(0, len(nums) - k):
             sum = 0
+            # Sum the window
             for j in range(0, k):
                 sum += nums[i + j]
             if sum/k > maxAverage:

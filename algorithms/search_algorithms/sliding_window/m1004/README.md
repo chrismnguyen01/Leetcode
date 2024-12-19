@@ -31,20 +31,20 @@ nums[i] is either 0 or 1.
 ```python
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
-        # left side of window = 0
+        # Left side of window = 0
         l = 0
-        # for each element
+        # For each element
         for r in range(len(nums)):
-            # if right of window is 0 subtract 1 from k (we're flipping)
+            # If right of window is 0 subtract 1 from k (we're flipping)
             if nums[r] == 0:
                 k -= 1
-            # if k is negative (we've run out of 0s to flip) move the left side
+            # If k is negative (we've run out of 0s to flip) move the left side
             if k < 0:
-                # if the left of the window is 0 then we gain a flip back
+                # If the left of the window is 0 then we gain a flip back
                 if nums[l] == 0:
                     k += 1
                 l += 1
         
-        # the size of the window is the max consecutive
+        # The size of the window is the max consecutive
         return r-l+1
 ```

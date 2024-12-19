@@ -33,10 +33,10 @@ class Solution:
 
         result = []
 
-        # for each element from 0 to the last window
+        # For each element from 0 to the last window
         for i in range(0, len(arr) - window_size):
             for j in range(0, window_size):
-                # do something
+                # Do something
 ```
 
 ### Running Count from Last Window
@@ -49,22 +49,22 @@ class Solution:
         
         m = cur = 0
         
-        # calculate first window
+        # Calculate first window
         for i in range(0, k):
-            #do something
+            # Do something
 
-        # iterate through each index after initial window until end
+        # Iterate through each index after initial window until end
         for i in range(k, len(s)):
-            # gaining something in new index
-            # losing something from last window
+            # Gaining something in new index
+            # Losing something from last window
             if s[i] and not s[i-k]:
                 cur += 1
-            # losing something in new index
-            # gaining something from last window
+            # Losing something in new index
+            # Gaining something from last window
             if not s[i] and s[i-k]:
                 cur -= 1
             
-            # get the max of this wondow or the maximum
+            # Get the max of this wondow or the maximum
             m = max(m, cur)
         return m
 ```
@@ -80,15 +80,16 @@ class Solution:
         l = 0
         m = 0
 
-        # for each element (this is moving the right pointer through the array)
+        # For each element (this is moving the right pointer through the array)
         for r in range(len(nums)):
             if something
             
-            # condition to move the left pointer
+            # Condition to move the left pointer
             while something:
-                l += 1
+                if condition to move left:
+                    l += 1
             
-            # return either 0 or the size of the window
+            # Return either 0 or the size of the window
             m = max(m, r - l)
         
         return m

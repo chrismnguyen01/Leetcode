@@ -1,6 +1,8 @@
-join
 
 arrays
+lists
+deque append appendleft pop popleft
+join
 
 infinity
 

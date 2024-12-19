@@ -62,13 +62,12 @@ def choose_directory(path):
     while True:
         directories = list_directories(path)
         if not directories:
-            print(f"No directories found in {path}.")
-            break
-        
-        # Display directories with numbers
-        print(f"\nCurrent Directory: {path}")
-        for i, dir in enumerate(directories, 1):
-            print(f"{i}. {dir.name}")
+            print(f"No directories to display")
+        else:
+            # Display directories with numbers
+            print(f"\nCurrent Directory: {path}")
+            for i, dir in enumerate(directories, 1):
+                print(f"{i}. {dir.name}")
         print("b. Go back to the parent directory")
         print("Press Enter to create a new directory")
 

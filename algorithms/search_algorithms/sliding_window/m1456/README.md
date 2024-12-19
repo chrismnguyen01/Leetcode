@@ -46,24 +46,24 @@ class Solution:
         
         m = cur = 0
         
-        # calculate first window
+        # Calculate first window
         for i in range(0, k):
             if s[i] in vowels:
                 m += 1
                 cur += 1
 
-        # iterate through each index after initial window until end
+        # Iterate through each index after initial window until end
         for i in range(k, len(s)):
-            # if newest addition is a vowel and end of last window is not a vowel
-            # we are gaining a vowel and losing a consonant so add to the current
+            # If newest addition is a vowel and end of last window is not a vowel
+            # We are gaining a vowel and losing a consonant so add to the current
             if s[i] in vowels and s[i-k] not in vowels:
                 cur += 1
-            # if newest addition is not a vowel and end of last window was a vowel
-            # we are losing a vowel and gaining a consonant so sub from the current
+            # If newest addition is not a vowel and end of last window was a vowel
+            # We are losing a vowel and gaining a consonant so sub from the current
             if s[i] not in vowels and s[i-k] in vowels:
                 cur -= 1
             
-            # get the max of this wondow or the maximum
+            # Get the max of this wondow or the maximum
             m = max(m, cur)
         return m
 ```
