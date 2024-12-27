@@ -12,7 +12,7 @@ def get_readme_data():
     Returns:
     str: The formatted content of the README file.
     """
-    with open('C:\\Users\\Christopher Nguyen\\Documents\\Work\\Leetcode\\python\\problem_description.txt', 'r') as file:
+    with open('problem_description.txt', 'r') as file:
         lines = file.readlines()
 
     # Process the main content
@@ -113,13 +113,13 @@ def create_readme(path):
     print(f"README.md file created in {path}.")
 
 def main():
-    current_path = Path('C:\\Users\\Christopher Nguyen\\Documents\\Work\\Leetcode')  # Start in the current working directory
+    current_path = Path('..')  # Start in the current working directory
     while True:
         chosen_directory = choose_directory(current_path)
         
         if chosen_directory is None:
             current_path = current_path.parent  # Go back to the parent directory
-            if current_path == Path('C:\\Users\\Christopher Nguyen\\Documents\\Work'):  # If we reach the root directory, stop
+            if current_path == Path('..'):  # If we reach the root directory, stop
                 print("Outside leetcode directory. Exiting.")
                 break
         else:
