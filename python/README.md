@@ -1,5 +1,5 @@
 
-arrays
+arrays len()
 lists
 deque append appendleft pop popleft
 join

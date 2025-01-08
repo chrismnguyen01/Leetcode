@@ -22,7 +22,7 @@ def get_readme_data():
             cleaned_lines.append(line.strip())
         elif cleaned_lines and cleaned_lines[-1]:
             cleaned_lines.append(line.strip())
-    
+
     add_new_lines = []
     add_code_tags = False
     # Add a newline before each 'Example #' except 'Example 1:'
@@ -46,11 +46,10 @@ def get_readme_data():
             if add_code_tags:
                 add_new_lines.append('```')
                 add_code_tags = False
-                
-    add_new_lines.pop()
+
     add_new_lines.append('```')
     text = '\n'.join(add_new_lines)
-    text += '\n\n```python\n\n```'
+    text += '\n\n## Code\n\n```python\n\n```'
     return text
 
 def list_directories(path):
@@ -124,8 +123,6 @@ def main():
                 break
         else:
             current_path = chosen_directory  # Change to the selected directory
-
-    
     
 if __name__ == "__main__":
     main()
