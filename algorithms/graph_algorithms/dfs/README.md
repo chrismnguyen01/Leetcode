@@ -37,6 +37,7 @@ def dfs(graph, v, visited):
     # Explore all the neighbors of node v
     for i in range(len(graph)):
         # If there is an edge between v and i, and i is not visited
+        # May not be an adjacency matrix could be coordinates, etc.
         if graph[v][i] == 1 and not visited[i]:
             dfs(graph, i, visited)  # Recursively visit the neighbor
 ```

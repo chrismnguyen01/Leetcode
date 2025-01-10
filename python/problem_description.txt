@@ -1,27 +1,30 @@
-Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+Given a binary tree
 
-Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+Initially, all next pointers are set to NULL.
 
  
 
 Example 1:
 
 
-Input: p = [1,2,3], q = [1,2,3]
-Output: true
+Input: root = [1,2,3,4,5,null,7]
+Output: [1,#,2,3,#,4,5,7,#]
+Explanation: Given the above binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with '#' signifying the end of each level.
 Example 2:
 
-
-Input: p = [1,2], q = [1,null,2]
-Output: false
-Example 3:
-
-
-Input: p = [1,2,1], q = [1,1,2]
-Output: false
+Input: root = []
+Output: []
  
 
 Constraints:
 
-The number of nodes in both trees is in the range [0, 100].
--104 <= Node.val <= 104
+The number of nodes in the tree is in the range [0, 6000].
+-100 <= Node.val <= 100
