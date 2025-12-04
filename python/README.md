@@ -5,6 +5,17 @@ When you pass an object to a function, you're actually passing a reference to th
 Immutable objects behave like pass by value:
 If you pass an immutable object (like a string, integer, or tuple) to a function, any changes made to the object within the function won't affect the original object outside the function. This is because modifications to immutable objects create new objects.
 
+| Data Structure | Example | Mutable? | Built-in / Module | Notes |
+|----------------|----------|-----------|--------------------|--------|
+| **Number** | `x = 42` | ❌ Immutable | Built-in | Includes `int`, `float`, `complex`, `bool` — new object created when changed |
+| **String** | `"hello"` | ❌ Immutable | Built-in | Characters cannot be changed in place |
+| **Tuple** | `(1, 2, 3)` | ❌ Immutable | Built-in | Ordered, fixed-size sequence |
+| **List** | `[1, 2, 3]` | ✅ Mutable | Built-in | Ordered, can add/remove/modify elements |
+| **Queue** | `queue.Queue()` | ✅ Mutable | `queue` module | Thread-safe FIFO queue, elements can be added/removed |
+| **HashSet** | `{1, 2, 3}` | ✅ Mutable | Built-in (`set`) | Unordered, unique elements, supports add/remove |
+| **HashMap** | `{"a": 1, "b": 2}` | ✅ Mutable | Built-in (`dict`) | Key-value pairs, keys must be hashable |
+| **Heap** | `heapq.heappush(heap, val)` | ✅ Mutable | `heapq` module | Implemented as a list that maintains heap order |
+
 ### Defining Variables
 ```python
 n = 1
@@ -147,6 +158,7 @@ arr.sort(key=lambda x: len(x)) # sorts by length, ascending order
 arr = [i for i in range(5)] # [0, 1, 2, 3, 4]
 arr = [i+i for i in range(5)] # [0, 2, 4, 6, 8]
 arr = [[0] * 4 for i in range(4)] # 2d list, 4x4 of 0s
+arr = [[0] * COLS for i in range(ROWS)] # 2d list, row is first index, col is second index of 0s
 arr = [[0] * 4] * 4 # this does NOT work, the 4 lists are the same object if you change one you change all of them
 ```
 
@@ -200,6 +212,9 @@ queue.popleft()
 
 # Pop from right
 queue.pop()
+
+# Length of queue
+len(queue)
 ```
 
 ## HashSet
@@ -225,6 +240,9 @@ mySet = set([1, 2, 3])
 
 # Initialize with set comprehension
 mySet = { i for i in range(5) }
+
+# Length of set
+len(mySet)
 ```
 
 ## HashMap (Dictionary)
@@ -245,6 +263,9 @@ len(myMap)
 # Get if key exists in map (constant time)
 v = "alice" in myMap
 
+# Get from map with default value
+v = myMap.get('key', defaultVal)
+
 # Remove key and value from map
 myMap.pop("alice")
 
@@ -262,6 +283,12 @@ for value in myMap.values():
 # Unpack
 for key, val in myMap.items():
     something()
+
+# Get keys
+keys = myMap.keys()
+
+# Get values
+values = myMap.values()
 ```
 
 ## Tuples
@@ -289,8 +316,17 @@ heapq.heappush(minHeap, 3)
 heapq.heappop(minHeap) # removes and returns the min element
 
 # Convert array to a heap
-arr = [1, 45, 2, 5]
-heapq.heapify(arr)
+minHeap = [1, 45, 2, 5]
+heapq.heapify(minHeap)
+
+# Convert array to a max heap
+heapq.heapify_max(maxHeap)
+
+# Pop max element
+heapq.heappop_max(maxHeap)
+
+# Add element to maxheap
+heapq.heappush_max(maxHeap, 3)
 ```
 
 ## Functions
@@ -329,3 +365,8 @@ class MyClass:
     def __repr__(self):
         return f"Nums: {self.nums}"
 ```
+
+## Extra Stuff
+```python
+# Get integer representation of a character (subtract ord('a') from ord(character)
+i = ord(c) - ord('a')

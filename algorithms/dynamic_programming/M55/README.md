@@ -61,3 +61,4 @@ class Solution:
                 return True  # If we can reach or surpass the last index
         return False
 ```
+

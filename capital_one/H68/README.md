@@ -1,3 +1,6 @@
+# Text Justification
+https://leetcode.com/problems/text-justification/description/
+
 Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
 
 You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly maxWidth characters.
@@ -11,46 +14,94 @@ Note:
 A word is defined as a character sequence consisting of non-space characters only.
 Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
 The input array words contains at least one word.
- 
 
-Example 1:
+### Example 1:
 
+```
 Input: words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16
 Output:
 [
-   "This    is    an",
-   "example  of text",
-   "justification.  "
+"This    is    an",
+"example  of text",
+"justification.  "
 ]
-Example 2:
+```
 
+### Example 2:
+
+```
 Input: words = ["What","must","be","acknowledgment","shall","be"], maxWidth = 16
 Output:
 [
-  "What   must   be",
-  "acknowledgment  ",
-  "shall be        "
+"What   must   be",
+"acknowledgment  ",
+"shall be        "
 ]
 Explanation: Note that the last line is "shall be    " instead of "shall     be", because the last line must be left-justified instead of fully-justified.
 Note that the second line is also left-justified because it contains only one word.
-Example 3:
+```
 
+### Example 3:
+
+```
 Input: words = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"], maxWidth = 20
 Output:
 [
-  "Science  is  what we",
-  "understand      well",
-  "enough to explain to",
-  "a  computer.  Art is",
-  "everything  else  we",
-  "do                  "
+"Science  is  what we",
+"understand      well",
+"enough to explain to",
+"a  computer.  Art is",
+"everything  else  we",
+"do                  "
 ]
- 
+```
 
-Constraints:
+### Constraints:
 
+```
 1 <= words.length <= 300
 1 <= words[i].length <= 20
 words[i] consists of only English letters and symbols.
 1 <= maxWidth <= 100
 words[i].length <= maxWidth
+```
+
+## Code
+
+```python
+class Solution:
+    def fullJustify(self, words, maxWidth):
+        res = []
+        i = 0
+        n = len(words)
+
+        while i < n:
+            # determine how many words fit in this line
+            lineLen = len(words[i])
+            j = i + 1
+            while j < n and lineLen + 1 + len(words[j]) <= maxWidth:
+                lineLen += 1 + len(words[j])
+                j += 1
+
+            lineWords = words[i:j]
+            numWords = j - i
+            numSpaces = maxWidth - sum(len(w) for w in lineWords)
+
+            # last line or single word -> left-justified
+            if j == n or numWords == 1:
+                line = " ".join(lineWords)
+                line += " " * (maxWidth - len(line))
+            else:
+                # distribute spaces evenly
+                spaceBetween, extra = divmod(numSpaces, numWords - 1)
+                line = ""
+                for k in range(numWords - 1):
+                    line += lineWords[k]
+                    line += " " * (spaceBetween + (1 if k < extra else 0))
+                line += lineWords[-1]
+
+            res.append(line)
+            i = j
+
+        return res
+```
