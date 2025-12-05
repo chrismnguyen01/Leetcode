@@ -57,49 +57,25 @@ The sum of the lengths of all words[i] does not exceed 5 * 105.
 ```python
 class TrieNode:
     def __init__(self):
-        self.children = {}
-        self.count = 0   # number of words ending exactly at this node
-
-
-class Trie:
-    def __init__(self):
-        self.root = TrieNode()
-
-    def count_matches(self, word):
-        """
-        Count how many words in the trie are complete matches
-        for prefixes of 'word'. Traversal stops at first mismatch.
-        """
-        node = self.root
-        total = 0
-
-        for ch in word:
-            if ch not in node.children:
-                break
-            node = node.children[ch]
-            total += node.count  # count full words finishing here
-
-        return total
-
-    def insert(self, word):
-        """Insert a word into the trie."""
-        node = self.root
-        for ch in word:
-            if ch not in node.children:
-                node.children[ch] = TrieNode()
-            node = node.children[ch]
-        node.count += 1
+        self.children = {}   # keys: (front_char, back_char)
+        self.count = 0       # how many words ended here
 
 
 class Solution:
     def countPrefixSuffixPairs(self, words):
-        trie = Trie()
+        root = TrieNode()
         ans = 0
 
-        # process words from right to left
-        for w in reversed(words):
-            ans += trie.count_matches(w)
-            trie.insert(w)
+        for s in words:
+            node = root
+            # walk through paired characters
+            for c1, c2 in zip(s, reversed(s)):
+                key = (c1, c2)
+                if key not in node.children:
+                    node.children[key] = TrieNode()
+                node = node.children[key]
+                ans += node.count  # previous word ended here → match found
+            node.count += 1  # mark full word inserted
 
         return ans
 ```
