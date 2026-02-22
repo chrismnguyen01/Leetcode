@@ -31,6 +31,8 @@ Input: root = []
 Output: []
 ```
 
+## Code
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode:
