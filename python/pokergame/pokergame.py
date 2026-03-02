@@ -158,7 +158,57 @@ class PokerHand:
         """Check if hands are equal"""
         return self.get_rank() == other.get_rank() and self.tie_breaker == other.tie_breaker
 
+import random
 
+class Deck:
+    """Represents a standard 52-card deck"""
+    
+    def __init__(self):
+        self._create_deck()
+    
+    def _create_deck(self):
+        """Create a fresh 52-card deck"""
+        self.cards = [
+            Card(rank, suit)
+            for suit in Card.SUITS
+            for rank in Card.RANKS
+        ]
+    
+    def shuffle(self):
+        """Shuffle the deck in place"""
+        for i in range(len(self.cards)):
+            r = random.randint(i, range(len(self.cards)))
+            self.cards[i], self.cards[r] = self.cards[r], self.cards[i]
+    
+    def draw(self, num=1):
+        """
+        Draw one or more cards from the top of the deck.
+        Returns a single Card if num=1,
+        otherwise returns a list of Cards.
+        """
+        if num < 1:
+            raise ValueError("Must draw at least one card")
+        
+        if num > len(self.cards):
+            raise ValueError("Not enough cards left in deck")
+        
+        if num == 1:
+            return self.cards.pop()
+        
+        return [self.cards.pop() for _ in range(num)]
+    
+    def reset(self):
+        """Reset to a full shuffled deck"""
+        self._create_deck()
+        self.shuffle()
+    
+    def __len__(self):
+        """Return number of cards remaining"""
+        return len(self.cards)
+    
+    def __repr__(self):
+        return f"Deck({len(self.cards)} cards remaining)"
+    
 # Utility Functions
 def parse_card(card_str):
     """Parse a card string like '5H' or '10D' into a Card object"""

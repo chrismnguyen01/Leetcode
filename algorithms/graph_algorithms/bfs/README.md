@@ -4,16 +4,16 @@
 Breadth-First Search (BFS) is an algorithm used to traverse or search through a graph or tree data structure. It starts at a root node (or any arbitrary node in the graph), explores all its neighbors, then moves on to the next level of neighbors, and continues this process until all nodes are visited.
 
 Key characteristics of BFS:
-    - Level-order traversal: It explores nodes in layers (level by level).
-    - Queue: BFS uses a queue data structure to store the nodes to be explored.
-    - Optimal for finding the shortest path in an unweighted graph.
+- Level-order traversal: It explores nodes in layers (level by level).
+- Queue: BFS uses a queue data structure to store the nodes to be explored.
+- Optimal for finding the shortest path in an unweighted graph.
 
 BFS Algorithm Steps:
-    - Start with a node and mark it as visited.
-    - Enqueue the node into a queue.
-    - While the queue is not empty:
-    - Dequeue the front node.
-    - Visit all its unvisited neighbors, mark them as visited, and enqueue them.
+- Start with a node and mark it as visited.
+- Enqueue the node into a queue.
+- While the queue is not empty:
+- Dequeue the front node.
+- Visit all its unvisited neighbors, mark them as visited, and enqueue them.
 
 ### Shell Code
 

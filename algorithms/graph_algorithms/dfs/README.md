@@ -4,17 +4,16 @@
 Depth-First Search (DFS) is an algorithm used to traverse or search through a graph or tree data structure. It starts at a root node (or any arbitrary node in the graph) and explores as far as possible along each branch before backtracking to explore other branches. DFS is often used when you need to explore as deeply as possible into a structure before returning to previous nodes. It is particularly useful in problems requiring exhaustive search or when exploring potential paths or solutions.
 
 Key characteristics of DFS:
-    - Depth-order traversal: It explores nodes by going deep along a path before backtracking.
-    - Stack: DFS uses a stack (either explicitly or via recursion) to store the nodes to be explored.
-    - Ideal for pathfinding: DFS can be used to find paths, connected components, or solve problems like maze exploration or topological sorting.
+- Depth-order traversal: It explores nodes by going deep along a path before backtracking.
+- Stack: DFS uses a stack (either explicitly or via recursion) to store the nodes to be explored.
+- Ideal for pathfinding: DFS can be used to find paths, connected components, or solve problems like maze exploration or topological sorting.
 
 DFS Algorithm Steps:
-    - Start with a node and mark it as visited.
-    - Push the node onto a stack.
-    - While the stack is not empty:
-    - Pop the top node from the stack.
-    - Visit all its unvisited neighbors, mark them as visited, and push them onto the stack.
-
+- Start with a node and mark it as visited.
+- Push the node onto a stack.
+- While the stack is not empty:
+- Pop the top node from the stack.
+- Visit all its unvisited neighbors, mark them as visited, and push them onto the stack.
 
 ### Shell Code
 
